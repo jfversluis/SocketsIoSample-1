@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:SocketsIoSample" 
+             x:Class="SocketsIoSample.SocketsIoSamplePage">
+
+    <StackLayout>
+        <StackLayout>
+            <ScrollView>
+
+                <ListView x:Name="Listview_ChatWindow">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Margin="15,10,15,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label x:Name="lbl_name" Grid.Row="0" Grid.Column="0" Text="{Binding name}">
+                                        </Label>
+                                        <Label x:Name="lbl_message" Grid.Row="0" Grid.Column="1" Text="{Binding message}">
+                                        </Label>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </ScrollView>
+        </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Entry x:Name="Entry_ChatText" Placeholder="Enter Message" />
+            <Button Text="Submit Text" Clicked="SendMessage_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
