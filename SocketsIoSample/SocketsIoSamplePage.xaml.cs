@@ -14,6 +14,9 @@ namespace SocketsIoSample
         string ChatName = "dtrick01@gmail.com";
         string ChatText;
 
+        // GV
+        public ObservableCollection<string> _ChatList = new ObservableCollection<string>();
+
         public SocketsIoSamplePage()
         {
             InitializeComponent();
@@ -28,14 +31,14 @@ namespace SocketsIoSample
 
             //call the incoming chat in here or do i replace it with just a static itemsource of the Chatoutput?
             //var _ChatList = new ObservableCollection<ChatOutput>();
-            //Listview_ChatWindow.ItemsSource = _ChatList;
+
+            // GV
+            Listview_ChatWindow.ItemsSource = _ChatList;
 
             MessagingCenter.Subscribe<object, string>(this, "UpdateChat", (s, e) =>
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Listview_ChatWindow.ItemsSource = e;
-                });
+                // GV
+                _ChatList.Add(e);
             });
 
 
